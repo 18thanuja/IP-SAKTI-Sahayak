@@ -2,5 +2,5 @@ fastapi
 uvicorn[standard]
 groq
 qdrant-client
-sentence-transformers
+fastembed
 python-dotenv
