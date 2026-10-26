@@ -2,37 +2,67 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
 
 :root {
-  font-family: 'DM Sans', Arial, sans-serif;
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #f1eff7;
-  background: #18181f;
+
+  /* Professional Ayurveda-inspired theme */
+  --green: #315c43;
+  --green-dark: #234532;
+  --green-light: #e5efe7;
+  --green-soft: #f0f6f0;
+
+  --sage: #a9c5ad;
+  --sage-light: #dce9dd;
+  --gold: #c49a52;
+
+  /* Global backgrounds */
+  --page-bg: #f7f8f3;
+  --chat-bg: #ffffff;
+  --surface: #edf2eb;
+  --surface-hover: #e5ece3;
+
+  /* Global text */
+  --text-main: #26382d;
+  --text-muted: #68766b;
+  --border-color: #dce4d9;
+
+  color: var(--text-main);
+  background: var(--page-bg);
+  color-scheme: light;
 }
 
+/* Consistent box sizing */
 * {
   box-sizing: border-box;
 }
 
 html {
+  width: 100%;
   min-width: 320px;
   min-height: 100%;
-  background: #18181f;
+  scroll-behavior: smooth;
+  background: var(--page-bg);
 }
 
 body {
   margin: 0;
+  width: 100%;
   min-width: 320px;
   min-height: 100vh;
-  background: #18181f;
+  background: var(--page-bg);
+  color: var(--text-main);
+  line-height: 1.6;
 }
 
 #root {
-  min-height: 100vh;
   width: 100%;
+  min-height: 100vh;
 }
 
+/* Consistent form typography */
 button,
 input,
 textarea,
@@ -42,6 +72,12 @@ select {
 
 button {
   cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 
 button:disabled {
@@ -49,15 +85,35 @@ button:disabled {
   opacity: 0.55;
 }
 
-a {
+input,
+textarea,
+select {
   color: inherit;
 }
 
-::selection {
-  color: #ffffff;
-  background: #6d568e;
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.85;
 }
 
+a {
+  color: var(--green);
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--green-dark);
+}
+
+/* Text selection */
+::selection {
+  color: #ffffff;
+  background: var(--green);
+}
+
+/* Clean scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -68,10 +124,48 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
   border-radius: 8px;
-  background: #403b4b;
+  background: #bdcdbd;
+  background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #5a506a;
+  background: #829d85;
+  background-clip: padding-box;
+}
+
+/* Visible keyboard focus */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+}
+
+/* Responsive defaults */
+img,
+video,
+svg {
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
